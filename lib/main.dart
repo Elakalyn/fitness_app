@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'Modules/Home/home.dart';
+import 'Modules/Authentication/Welcome/welcome.dart';
+import 'Modules/BNB/bottomNav.dart';
+import 'Modules/Start Exercise/startExercise.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Poppins',
       ),
-      home: HomeScreen(),
+      home: WelcomeScreen(),
     );
   }
 }

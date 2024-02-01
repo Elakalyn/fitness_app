@@ -14,10 +14,10 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: HexColor("E2E2E2"),
         centerTitle: true,
-        title: Text('November 19th'),
+        title: const Text('November 19th'),
         actions: [
           IconButton(
-            icon: Icon(Icons.settings),
+            icon: const Icon(Icons.settings),
             onPressed: () {},
           ),
         ],
@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: styledCard(
                 width: 360.0,
                 height: 235.0,
@@ -83,7 +83,7 @@ Burned!""",
                                   height: 15,
                                   clipBehavior: Clip.antiAlias,
                                   decoration: ShapeDecoration(
-                                    color: Color(0xFFF2C70D),
+                                    color: const Color(0xFFF2C70D),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(20),
                                     ),
@@ -93,7 +93,7 @@ Burned!""",
                             ),
                           ),
                           8.h,
-                          Align(
+                          const Align(
                             alignment: Alignment.center,
                             child: Text(
                               '94% of daily goal reached',
@@ -114,7 +114,7 @@ Burned!""",
             ),
             24.h,
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Row(
                 children: [
                   Expanded(
@@ -152,8 +152,8 @@ Burned!""",
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
-                                  Spacer(),
-                                  Align(
+                                  const Spacer(),
+                                  const Align(
                                     alignment: Alignment.topRight,
                                     child: PhosphorIcon(
                                       PhosphorIconsFill.moon,
@@ -203,8 +203,8 @@ Burned!""",
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
-                                  Spacer(),
-                                  Align(
+                                  const Spacer(),
+                                  const Align(
                                     alignment: Alignment.topRight,
                                     child: PhosphorIcon(
                                       PhosphorIconsFill.lightning,
@@ -222,7 +222,7 @@ Burned!""",
               ),
             ),
             41.h,
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Align(
                   alignment: Alignment.centerLeft,
@@ -237,15 +237,15 @@ Burned!""",
             ),
             8.h,
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: styledCard(
                   width: 320.0,
                   height: 140.0,
                   color: Colors.white,
                   child: Stack(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 17.0, right: 16),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 17.0, right: 16),
                         child: Align(
                           alignment: Alignment.topRight,
                           child: PhosphorIcon(
@@ -259,7 +259,7 @@ Burned!""",
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           20.w,
-                          Align(
+                          const Align(
                             alignment: Alignment.centerLeft,
                             child: PhosphorIcon(
                               PhosphorIconsFill.sunHorizon,
@@ -291,7 +291,7 @@ Burned!""",
                               8.h,
                               Row(
                                 children: [
-                                  Text(
+                                  const Text(
                                     '5 km',
                                     style: TextStyle(
                                       color: Color(0xFF6E6E6E),
@@ -300,13 +300,13 @@ Burned!""",
                                     ),
                                   ),
                                   3.w,
-                                  PhosphorIcon(
+                                  const PhosphorIcon(
                                     PhosphorIconsFill.fire,
                                     size: 15,
                                     color: Color(0xFF6E6E6E),
                                   ),
                                   8.w,
-                                  Text(
+                                  const Text(
                                     '513 kcal Burned',
                                     style: TextStyle(
                                       color: Color(0xFF6E6E6E),
@@ -326,15 +326,15 @@ Burned!""",
             ),
             16.h,
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: styledCard(
                   width: 320.0,
                   height: 140.0,
                   color: Colors.white,
                   child: Stack(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 17.0, right: 16),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 17.0, right: 16),
                         child: Align(
                           alignment: Alignment.topRight,
                           child: PhosphorIcon(
@@ -348,7 +348,7 @@ Burned!""",
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           20.w,
-                          Align(
+                          const Align(
                             alignment: Alignment.centerLeft,
                             child: PhosphorIcon(
                               PhosphorIconsFill.sun,
@@ -380,7 +380,7 @@ Burned!""",
                               8.h,
                               Row(
                                 children: [
-                                  Text(
+                                  const Text(
                                     '2 km',
                                     style: TextStyle(
                                       color: Color(0xFF6E6E6E),
@@ -389,13 +389,13 @@ Burned!""",
                                     ),
                                   ),
                                   3.w,
-                                  PhosphorIcon(
+                                  const PhosphorIcon(
                                     PhosphorIconsFill.fire,
                                     size: 15,
                                     color: Color(0xFF6E6E6E),
                                   ),
                                   8.w,
-                                  Text(
+                                  const Text(
                                     '273 kcal Burned',
                                     style: TextStyle(
                                       color: Color(0xFF6E6E6E),
@@ -415,7 +415,7 @@ Burned!""",
             ),
             16.h,
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: styledCard(
                   width: 320.0,
                   height: 140.0,
@@ -426,7 +426,7 @@ Burned!""",
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           20.w,
-                          Align(
+                          const Align(
                             alignment: Alignment.centerLeft,
                             child: PhosphorIcon(
                               PhosphorIconsFill.clockAfternoon,
@@ -466,7 +466,7 @@ Burned!""",
             ),
             16.h,
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: styledCard(
                   width: 320.0,
                   height: 140.0,
@@ -477,7 +477,7 @@ Burned!""",
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           20.w,
-                          Align(
+                          const Align(
                             alignment: Alignment.centerLeft,
                             child: PhosphorIcon(
                               PhosphorIconsFill.moon,
@@ -516,7 +516,7 @@ Burned!""",
                   )),
             ),
             
-            48.h,
+            150.h,
           ],
         ),
       ),
