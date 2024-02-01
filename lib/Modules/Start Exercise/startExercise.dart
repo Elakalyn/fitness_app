@@ -107,7 +107,7 @@ class StartExercise extends StatelessWidget {
                   24.h,
                   TextButton(
                         onPressed: () {},
-                        child: Text('Start',
+                        child: Text('Finish',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 18,
