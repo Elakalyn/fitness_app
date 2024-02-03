@@ -4,6 +4,8 @@ import 'package:speed_up_flutter/speed_up_flutter.dart';
 import '../../Shared/Components/components.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
+import '../Settings/settings.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -16,10 +18,7 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         title: const Text('November 19th'),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () {},
-          ),
+          settingsIcon(),
         ],
       ),
       body: SingleChildScrollView(
@@ -523,3 +522,5 @@ Burned!""",
     );
   }
 }
+
+

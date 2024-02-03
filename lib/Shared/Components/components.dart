@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../Modules/Settings/settings.dart';
+
 class styledCard extends StatelessWidget {
   styledCard({
     super.key,
@@ -35,6 +37,34 @@ class styledCard extends StatelessWidget {
         ],
       ),
       child: child,
+    );
+  }
+}
+
+Future<void> navigateToAndFinish(context, widget) async =>
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => widget),
+      (route) => false,
+    );
+
+Future<void> navigateTo(context, widget) async => Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => widget),
+    );
+
+class settingsIcon extends StatelessWidget {
+  const settingsIcon({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: const Icon(Icons.settings),
+      onPressed: () {
+        navigateTo(context, SettingsScreen());
+      },
     );
   }
 }

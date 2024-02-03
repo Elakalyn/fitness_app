@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:speed_up_flutter/speed_up_flutter.dart';
 
+import '../Start Exercise/startExercise.dart';
+
 class ExerciseDetails extends StatelessWidget {
   const ExerciseDetails({super.key});
 
@@ -114,7 +116,9 @@ class ExerciseDetails extends StatelessWidget {
                         )),
                     32.h,
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        navigateTo(context, StartExercise());
+                      },
                       child: Text('Start',
                           style: TextStyle(
                             color: Colors.white,

@@ -4,6 +4,10 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:speed_up_flutter/speed_up_flutter.dart';
 
+import '../../Shared/cubit/app_cubit.dart';
+import '../BNB/bottomNav.dart';
+import '../Home/home.dart';
+
 class StartExercise extends StatelessWidget {
   const StartExercise({super.key});
 
@@ -106,7 +110,10 @@ class StartExercise extends StatelessWidget {
                   ),
                   24.h,
                   TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          
+                              navigateToAndFinish(context, BNB());
+                        },
                         child: Text('Finish',
                             style: TextStyle(
                               color: Colors.white,
