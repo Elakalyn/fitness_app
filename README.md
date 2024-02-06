@@ -18,7 +18,11 @@
 
 ## 📱 Screenshots (Android):
 
-WIP
+<img src="https://github.com/Elakalyn/fitness_app/assets/115952480/86e72d29-f0a6-4416-ab4c-5c3349dd15ef" width="192" height="432">
+<img src="https://github.com/Elakalyn/fitness_app/assets/115952480/be55a7cf-0afb-4f80-8a5c-a2990476a8b9" width="192" height="432"> 
+<img src="https://github.com/Elakalyn/fitness_app/assets/115952480/ac57e049-b469-4c18-a16d-870e7ee851d6" width="192" height="432">
+<img src="https://github.com/Elakalyn/fitness_app/assets/115952480/159a47b0-ae91-46a3-ad80-57171e1686fb" width="192" height="432">
+
 
 # Community
 
