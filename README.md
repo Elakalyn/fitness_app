@@ -13,7 +13,7 @@
 
 </p>
 
-<p align="center">This project simplifies the user's fitness journey through personalized profiles, activity monitoring, progress tracking, meal planning, daily reminders and more. Users can effortlessly track their physical activities, monitor their progress and follow personalized meal plans. This comprehensive app empowers individuals to optimize their fitness routines, achieve their goals, and maintain a healthy lifestyle.</p>
+<p align="center">This project simplifies the user's fitness journey through personalized profiles, activity monitoring, progress tracking, meal planning, daily reminders and more. Users can effortlessly track their physical activities, monitor their progress, set their dietary plan to have the app design a suitable meal plan for them, set milestones and receive notifications when they achieve them. This comprehensive app empowers individuals to optimize their fitness routines, achieve their goals, and maintain a healthy lifestyle.</p>
 
 
 ## 📱 Screenshots (Android):
