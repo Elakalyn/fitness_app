@@ -37,6 +37,10 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           scaffoldBackgroundColor: HexColor('E2E2E2'),
           fontFamily: 'Poppins',
+          appBarTheme: AppBarTheme(
+            elevation: 0,
+            color: HexColor('E2E2E2'),
+          ),
         ),
         home: home,
       ),

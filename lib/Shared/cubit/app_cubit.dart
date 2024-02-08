@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
+import '../../Modules/Authentication/Welcome/welcome.dart';
 import '../../Modules/BNB/bottomNav.dart';
 import '../../Modules/Exercises/exercises.dart';
 import '../../Modules/Meals/meals.dart';
@@ -18,8 +19,12 @@ class AppCubit extends Cubit<AppState> {
   AppCubit() : super(AppInitial());
   static AppCubit get(context) => BlocProvider.of(context);
 
-  List<Widget> screens = [HomeScreen(), MealsScreen(), ExercisesScreen()];
-  dynamic currentScreen = HomeScreen();
+  List<Widget> screens = [
+    const HomeScreen(),
+    const MealsScreen(),
+    const ExercisesScreen()
+  ];
+  dynamic currentScreen = const HomeScreen();
 
   void changeBNB(screen) {
     currentScreen = screen;
@@ -144,5 +149,46 @@ class AppCubit extends Cubit<AppState> {
       }
       return null;
     }
+  }
+
+  Future<void> logout(context) async {
+    await CacheHelper.removeData(key: 'uid');
+    navigateToAndFinish(context, const WelcomeScreen());
+  }
+
+  void addExercise(
+      {required name,
+      required focusArea,
+      required equipment,
+      required List<String> tips,
+      required image}) {
+    FirebaseFirestore.instance.collection('exercises').doc().set({
+      'name': name,
+      'icon': '',
+      'image': image,
+      'focus area': focusArea,
+      'equipment': equipment,
+      'tips': tips,
+    });
+  }
+
+  void addMeal({
+    required diet,
+    required image,
+    required name,
+    required time,
+    required calories,
+    required List<String> ingredients,
+    required List<String> instructions,
+  }) {
+    FirebaseFirestore.instance.collection('meals').doc().set({
+      'diet': diet,
+      'image': image,
+      'name': name,
+      'time': time,
+      'calories': calories,
+      'ingredients': ingredients,
+      'instructions': instructions,
+    });
   }
 }

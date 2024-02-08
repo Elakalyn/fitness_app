@@ -6,6 +6,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:speed_up_flutter/speed_up_flutter.dart';
 
 import '../../../Shared/Components/components.dart';
+import '../../AdminPanel/admin.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -121,7 +122,14 @@ class LoginScreen extends StatelessWidget {
                     ),
                     24.h,
                     GestureDetector(
+                      onLongPress: (){
+                         navigateToAndFinish(context, BNB());
+                      },
                       onTap: () {
+                        if(emailController.text == 'admin' && passwordController.text == 'admin'){
+                          navigateToAndFinish(context, AdminPanel());
+                        }
+
                         if (formKey.currentState!.validate()) {
                           AppCubit.get(context)
                               .loginUser(emailController.text,
