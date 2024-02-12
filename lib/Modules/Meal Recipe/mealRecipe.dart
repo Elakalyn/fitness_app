@@ -4,6 +4,8 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:speed_up_flutter/speed_up_flutter.dart';
 
+import '../SwapMeals/swapMeals.dart';
+
 class MealRecipe extends StatelessWidget {
   const MealRecipe({super.key});
 
@@ -157,7 +159,9 @@ class MealRecipe extends StatelessWidget {
                           )),
                       32.h,
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          navigateTo(context, SwapMealsScreen());
+                        },
                         child: Text('Swap',
                             style: TextStyle(
                               color: Colors.white,

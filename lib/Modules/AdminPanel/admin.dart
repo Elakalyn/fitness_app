@@ -18,8 +18,7 @@ class AdminPanel extends StatelessWidget {
     var exerciseNameController = TextEditingController();
     var exerciseFocusController = TextEditingController();
     var exerciseEquipmentController = TextEditingController();
-    var exerciseTip1Controller = TextEditingController();
-    var exerciseTip2Controller = TextEditingController();
+    var exerciseTipsController = TextEditingController();
     var exerciseImageController = TextEditingController();
     var cubit = AppCubit.get(context);
 
@@ -32,10 +31,6 @@ class AdminPanel extends StatelessWidget {
     var mealIngredientsController = TextEditingController();
     var mealInstructionsController = TextEditingController();
 
-    List tips = [
-      exerciseTip1Controller,
-      exerciseTip2Controller,
-    ];
     return Scaffold(
       appBar: AppBar(
         title: Text('Admin Panel',
@@ -136,7 +131,7 @@ class AdminPanel extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: Row(
                         children: [
-                          Text('Tip #1',
+                          Text('Tips',
                               style: TextStyle(
                                 color: HexColor('2E2E2E'),
                                 fontSize: 24,
@@ -146,27 +141,7 @@ class AdminPanel extends StatelessWidget {
                           SizedBox(
                             width: 100,
                             child:
-                                TextField(controller: exerciseTip1Controller),
-                          ),
-                        ],
-                      ),
-                    ),
-                    8.h,
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Row(
-                        children: [
-                          Text('Tip #2',
-                              style: TextStyle(
-                                color: HexColor('2E2E2E'),
-                                fontSize: 24,
-                                fontWeight: FontWeight.w500,
-                              )),
-                          Spacer(),
-                          SizedBox(
-                            width: 100,
-                            child:
-                                TextField(controller: exerciseTip2Controller),
+                                TextField(controller: exerciseTipsController),
                           ),
                         ],
                       ),
@@ -198,14 +173,15 @@ class AdminPanel extends StatelessWidget {
                         alignment: Alignment.bottomRight,
                         child: TextButton(
                           onPressed: () {
-                            String tip1 = tips[0].text;
-                            String tip2 = tips[1].text;
+                            List<String> tips =
+                                exerciseTipsController.text.split(',');
                             cubit.addExercise(
                                 name: exerciseNameController.text,
                                 focusArea: exerciseFocusController.text,
                                 equipment: exerciseEquipmentController.text,
-                                tips: [tip1, tip2],
-                                image: exerciseImageController.text);
+                                tips: tips,
+                                image: exerciseImageController.text,
+                                context: context);
                           },
                           style: ButtonStyle(
                               backgroundColor:
@@ -399,7 +375,8 @@ class AdminPanel extends StatelessWidget {
                                 time: mealTimeController.text,
                                 calories: mealCaloriesController.text,
                                 ingredients: ingredients,
-                                instructions: instructions);
+                                instructions: instructions,
+                                context: context);
                           },
                           style: ButtonStyle(
                               backgroundColor:

@@ -161,7 +161,8 @@ class AppCubit extends Cubit<AppState> {
       required focusArea,
       required equipment,
       required List<String> tips,
-      required image}) {
+      required image,
+      required context}) {
     FirebaseFirestore.instance.collection('exercises').doc().set({
       'name': name,
       'icon': '',
@@ -169,6 +170,20 @@ class AppCubit extends Cubit<AppState> {
       'focus area': focusArea,
       'equipment': equipment,
       'tips': tips,
+    }).then((value) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        backgroundColor: Colors.green,
+        content: Text("Exercise added successfully!",
+            style: TextStyle(color: Colors.white)),
+        duration: Duration(seconds: 3),
+      ));
+    }).catchError((e) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        backgroundColor: Colors.red,
+        content: Text("Failed to add exercise.",
+            style: TextStyle(color: Colors.white)),
+        duration: Duration(seconds: 3),
+      ));
     });
   }
 
@@ -180,6 +195,7 @@ class AppCubit extends Cubit<AppState> {
     required calories,
     required List<String> ingredients,
     required List<String> instructions,
+    required context,
   }) {
     FirebaseFirestore.instance.collection('meals').doc().set({
       'diet': diet,
@@ -189,6 +205,22 @@ class AppCubit extends Cubit<AppState> {
       'calories': calories,
       'ingredients': ingredients,
       'instructions': instructions,
+    }).then((value) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        backgroundColor: Colors.green,
+        content: Text("Meal added successfully!",
+            style: TextStyle(color: Colors.white)),
+        duration: Duration(seconds: 3),
+      ));
+    }).catchError((e) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        backgroundColor: Colors.red,
+        content:
+            Text("Failed to add meal.", style: TextStyle(color: Colors.white)),
+        duration: Duration(seconds: 3),
+      ));
     });
   }
+
+ 
 }
