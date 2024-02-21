@@ -22,3 +22,10 @@ class LoadingRegisterState extends AppState {}
 class ErrorRegisterState extends AppState {}
 
 class SuccessRegisterState extends AppState {}
+
+// Search states
+
+final class StartSearchState extends AppState {}
+final class SearchLoadingState extends AppState {}
+final class SearchSuccessState extends AppState {}
+final class SearchErrorState extends AppState {}

@@ -1,5 +1,8 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fitness_app/Modules/ExerciseDetails/exerciseDetails.dart';
+import 'package:fitness_app/Modules/Exercises/exerciseSearch.dart';
 import 'package:fitness_app/Shared/Components/components.dart';
 import 'package:fitness_app/Shared/cubit/app_cubit.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +31,9 @@ class ExercisesScreen extends StatelessWidget {
             actions: [
               IconButton(
                 icon: Icon(Icons.search),
-                onPressed: () {},
+                onPressed: () {
+                  navigateTo(context, ExerciseSearchScreen());
+                },
               ),
               settingsIcon(),
             ],
@@ -54,9 +59,7 @@ class ExercisesScreen extends StatelessWidget {
                       )),
                   8.h,
                   GestureDetector(
-                    onTap: () {
-           
-                    },
+                    onTap: () {},
                     child: styledCard(
                       width: 320.0,
                       height: 130.0,
@@ -114,9 +117,7 @@ class ExercisesScreen extends StatelessWidget {
                   ),
                   16.h,
                   GestureDetector(
-                    onTap: () {
-                      
-                    },
+                    onTap: () {},
                     child: styledCard(
                       width: 320.0,
                       height: 130.0,
@@ -211,6 +212,7 @@ class ExercisesScreen extends StatelessWidget {
                               equipment: document['equipment'],
                               focus: document['focus area'],
                               tips: document['tips'],
+                              icon: document['icon'],
                               image: document['image']);
                         },
                         separatorBuilder: (context, index) => 16.h,
@@ -242,7 +244,7 @@ class exerciseWidget extends StatelessWidget {
   });
 
   final name;
-  final icon;
+  var icon;
   final equipment;
   final focus;
   final tips;
@@ -250,9 +252,23 @@ class exerciseWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (icon == 'lowerbody') {
+      icon = Image.asset('images/lowerBody.png');
+    } else if (icon == 'abs') {
+      icon = Image.asset('images/abs.png');
+    } else if (icon == 'upperbody') {
+      icon = Image.asset('images/upperBody.png');
+    }
     return GestureDetector(
       onTap: () {
-        navigateTo(context, ExerciseDetails(name: name, equipment: equipment, focus: focus, tips: tips, image: image));
+        navigateTo(
+            context,
+            ExerciseDetails(
+                name: name,
+                equipment: equipment,
+                focus: focus,
+                tips: tips,
+                image: image));
       },
       child: styledCard(
         width: 320.0,
@@ -286,11 +302,7 @@ class exerciseWidget extends StatelessWidget {
                 children: [
                   Align(
                     alignment: Alignment.topLeft,
-                    child: PhosphorIcon(
-                      PhosphorIconsFill.goggles,
-                      size: 70,
-                      color: Colors.black,
-                    ),
+                    child: icon,
                   ),
                   8.w,
                   Align(

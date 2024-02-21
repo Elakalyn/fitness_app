@@ -1,238 +1,417 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:onboarding/onboarding.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:speed_up_flutter/speed_up_flutter.dart';
+
+import '../../Shared/Components/components.dart';
 
 class ProfileSetup extends StatelessWidget {
-  ProfileSetup({super.key});
-  final onboardingPagesList = [
-    PageModel(
-      widget: DecoratedBox(
-        decoration: BoxDecoration(
-          color: background,
-          border: Border.all(
-            width: 0.0,
-            color: background,
-          ),
-        ),
-        child: SingleChildScrollView(
-          controller: ScrollController(),
-          child: Column(
-            children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 45.0),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'SECURED BACKUP',
-                    style: pageTitleStyle,
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 45.0, vertical: 10.0),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Keep your files in closed safe so you can\'t lose them. Consider TrueNAS.',
-                    style: pageInfoStyle,
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 45.0, vertical: 10.0),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Keep your files in closed safe so you can\'t lose them. Consider TrueNAS.',
-                    style: pageInfoStyle,
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 45.0, vertical: 10.0),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Keep your files in closed safe so you can\'t lose them. Consider TrueNAS.',
-                    style: pageInfoStyle,
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 45.0, vertical: 10.0),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Keep your files in closed safe so you can\'t lose them. Consider TrueNAS.',
-                    style: pageInfoStyle,
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    ),
-    PageModel(
-      widget: DecoratedBox(
-        decoration: BoxDecoration(
-          color: background,
-          border: Border.all(
-            width: 0.0,
-            color: background,
-          ),
-        ),
-        child: SingleChildScrollView(
-          controller: ScrollController(),
-          child: Column(
-            children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 45.0),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'CHANGE AND RISE',
-                    style: pageTitleStyle,
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 45.0, vertical: 10.0),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Give others access to any file or folders you choose',
-                    style: pageInfoStyle,
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    ),
-    PageModel(
-      widget: DecoratedBox(
-        decoration: BoxDecoration(
-          color: background,
-          border: Border.all(
-            width: 0.0,
-            color: background,
-          ),
-        ),
-        child: SingleChildScrollView(
-          controller: ScrollController(),
-          child: Column(
-            children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 45.0),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'EASY ACCESS',
-                    style: pageTitleStyle,
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 45.0, vertical: 10.0),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Reach your files anytime from any devices anywhere',
-                    style: pageInfoStyle,
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    ),
-  ];
-  var index;
+  const ProfileSetup({super.key});
+
   @override
   Widget build(BuildContext context) {
+    final controller = PageController(viewportFraction: 0.8, keepPage: true);
     return Scaffold(
-      body: Scaffold(
-        body: Onboarding(
-          pages: onboardingPagesList,
-          onPageChange: (int pageIndex) {
-            index = pageIndex;
-          },
-          startPageIndex: 0,
-          footerBuilder: (context, dragDistance, pagesLength, setIndex) {
-            return DecoratedBox(
-              decoration: BoxDecoration(
-                color: background,
-                border: Border.all(
-                  width: 0.0,
-                  color: background,
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            40.h,
+            SmoothPageIndicator(
+                controller: controller, // PageController
+                count: 3,
+                effect: WormEffect(
+                    dotHeight: 10,
+                    dotWidth: 92,
+                    dotColor: Colors.white,
+                    activeDotColor:
+                        HexColor("F2C70D")), // your preferred effect
+                onDotClicked: (index) {}),
+            32.h,
+            Text('What\'s your goal?',
+                style: TextStyle(
+                  color: HexColor('2E2E2E'),
+                  fontSize: 32,
+                  fontWeight: FontWeight.w600,
+                )),
+            48.h,
+            styledCard(
+              color: Colors.white,
+              width: 320.0,
+              height: 80.0,
+              child: const Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Row(
+                  children: [
+                    Align(
+                      alignment: Alignment.center,
+                      child: Text('Lose Weight',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 24,
+                          )),
+                    ),
+                  ],
                 ),
               ),
-              child: ColoredBox(
-                color: background,
-                child: Padding(
-                  padding: const EdgeInsets.all(45.0),
+            ),
+            32.h,
+            styledCard(
+              color: Colors.white,
+              width: 320.0,
+              height: 80.0,
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Row(
+                  children: [
+                    const Align(
+                      alignment: Alignment.center,
+                      child: Text('Gain Weight',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 24,
+                          )),
+                    ),
+                    8.w,
+                  ],
+                ),
+              ),
+            ),
+            32.h,
+            styledCard(
+              color: Colors.white,
+              width: 320.0,
+              height: 80.0,
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Row(
+                  children: [
+                    const Align(
+                      alignment: Alignment.center,
+                      child: Text('Maintain Weight',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 24,
+                          )),
+                    ),
+                    8.w,
+                  ],
+                ),
+              ),
+            ),
+            48.h,
+            TextButton(
+              onPressed: () {},
+              style: ButtonStyle(
+                  minimumSize: const MaterialStatePropertyAll(Size(320, 47)),
+                  backgroundColor:
+                      MaterialStatePropertyAll(HexColor('F2C70D'))),
+              child: const Text('Next',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  )),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ProfileSetup2 extends StatelessWidget {
+  const ProfileSetup2({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final controller = PageController(viewportFraction: 0.8, keepPage: true);
+    return Scaffold(
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              40.h,
+              SmoothPageIndicator(
+                  controller: controller, // PageController
+                  count: 3,
+                  effect: WormEffect(
+                      dotHeight: 10,
+                      dotWidth: 92,
+                      dotColor: Colors.white,
+                      activeDotColor:
+                          HexColor("F2C70D")), // your preferred effect
+                  onDotClicked: (index) {}),
+              32.h,
+              Text('What\'s your preferred diet?',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: HexColor('2E2E2E'),
+                    fontSize: 32,
+                    fontWeight: FontWeight.w600,
+                  )),
+              48.h,
+              styledCard(
+                color: Colors.white,
+                width: 320.0,
+                height: 80.0,
+                child: const Padding(
+                  padding: EdgeInsets.all(20.0),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CustomIndicator(
-                        netDragPercent: dragDistance,
-                        pagesLength: pagesLength,
-                        indicator: Indicator(
-                          indicatorDesign: IndicatorDesign.polygon(
-                            polygonDesign: PolygonDesign(
-                              polygon: DesignType.polygon_arrow,
-                            ),
-                          ),
-                        ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Text('None',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 24,
+                            )),
                       ),
-                      index == pagesLength - 1
-                          ? TextButton(
-                              onPressed: () {},
-                              style: ButtonStyle(
-                                  backgroundColor: MaterialStatePropertyAll(
-                                      HexColor('F2C70D'))),
-                              child: const Text('Finish',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
-                                  )),
-                            )
-                          : TextButton(
-                              onPressed: () {
-                                if (setIndex != null) {
-                                  index = 2;
-                                  setIndex(2);
-                                }
-                              },
-                              style: ButtonStyle(
-                                  backgroundColor: MaterialStatePropertyAll(
-                                      HexColor('F2C70D'))),
-                              child: const Text('Skip',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
-                                  )),
-                            ),
                     ],
                   ),
                 ),
               ),
-            );
-          },
+              32.h,
+              styledCard(
+                color: Colors.white,
+                width: 320.0,
+                height: 80.0,
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Row(
+                    children: [
+                      const Align(
+                        alignment: Alignment.center,
+                        child: Text('Ketogenic',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 24,
+                            )),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              32.h,
+              styledCard(
+                color: Colors.white,
+                width: 320.0,
+                height: 80.0,
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Row(
+                    children: [
+                      const Align(
+                        alignment: Alignment.center,
+                        child: Text('Paleo',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 24,
+                            )),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              32.h,
+              styledCard(
+                color: Colors.white,
+                width: 320.0,
+                height: 80.0,
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Row(
+                    children: [
+                      const Align(
+                        alignment: Alignment.center,
+                        child: Text('Vegan',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 24,
+                            )),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              48.h,
+              TextButton(
+                onPressed: () {},
+                style: ButtonStyle(
+                    minimumSize: const MaterialStatePropertyAll(Size(320, 47)),
+                    backgroundColor:
+                        MaterialStatePropertyAll(HexColor('F2C70D'))),
+                child: const Text('Next',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    )),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ProfileSetup3 extends StatelessWidget {
+  const ProfileSetup3({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final controller = PageController(viewportFraction: 0.8, keepPage: true);
+    return Scaffold(
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              40.h,
+              SmoothPageIndicator(
+                  controller: controller, // PageController
+                  count: 3,
+                  effect: WormEffect(
+                      dotHeight: 10,
+                      dotWidth: 92,
+                      dotColor: Colors.white,
+                      activeDotColor:
+                          HexColor("F2C70D")), // your preferred effect
+                  onDotClicked: (index) {}),
+              32.h,
+              Text('What\'re your dimensions?',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: HexColor('2E2E2E'),
+                    fontSize: 32,
+                    fontWeight: FontWeight.w600,
+                  )),
+              48.h,
+              styledCard(
+                color: Colors.white,
+                width: 320.0,
+                height: 228.0 + 8,
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    children: [
+                      const Align(
+                        alignment: Alignment.topLeft,
+                        child: Text('Profile',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 32,
+                            )),
+                      ),
+                      16.h,
+                      Row(
+                        children: [
+                          const Text('Weight',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 24,
+                              )),
+                          const Spacer(),
+                          const Text('78 KG',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
+                              )),
+                          8.w,
+                          const PhosphorIcon(
+                            PhosphorIconsFill.caretUpDown,
+                            size: 27,
+                            color: Colors.black,
+                          ),
+                        ],
+                      ),
+                      8.h,
+                      Row(
+                        children: [
+                          const Text('Height',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 24,
+                              )),
+                          const Spacer(),
+                          const Text('164 CM',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
+                              )),
+                          8.w,
+                          const PhosphorIcon(
+                            PhosphorIconsFill.caretUpDown,
+                            size: 27,
+                            color: Colors.black,
+                          ),
+                        ],
+                      ),
+                      8.h,
+                      Row(
+                        children: [
+                          const Text('Gender',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 24,
+                              )),
+                          const Spacer(),
+                          const Text('Female',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
+                              )),
+                          8.w,
+                          const PhosphorIcon(
+                            PhosphorIconsFill.caretDown,
+                            size: 27,
+                            color: Colors.black,
+                          ),
+                        ],
+                      ),
+                      8.h,
+                    ],
+                  ),
+                ),
+              ),
+              48.h,
+              TextButton(
+                onPressed: () {},
+                style: ButtonStyle(
+                    minimumSize: const MaterialStatePropertyAll(Size(320, 47)),
+                    backgroundColor:
+                        MaterialStatePropertyAll(HexColor('F2C70D'))),
+                child: const Text('Next',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    )),
+              ),
+            ],
+          ),
         ),
       ),
     );

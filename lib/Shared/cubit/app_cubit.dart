@@ -222,5 +222,32 @@ class AppCubit extends Cubit<AppState> {
     });
   }
 
- 
+  Future<List<DocumentSnapshot>> searchDocuments(String searchQuery) async {
+    emit(SearchLoadingState());
+    final QuerySnapshot snapshot = await FirebaseFirestore.instance
+        .collection('exercises') // Replace with your collection name
+        .where('name', isGreaterThanOrEqualTo: searchQuery)
+        .get()
+        .whenComplete(() {
+      emit(SearchSuccessState());
+    }).catchError((e) {
+      emit(SearchErrorState());
+      print(e.toString());
+    });
+
+    return snapshot.docs;
+  }
+
+  String searchQuery = '';
+  List<DocumentSnapshot> searchResults = [];
+
+  void performSearch() async {
+    emit(StartSearchState());
+    if (searchQuery.isNotEmpty) {
+      final List<DocumentSnapshot> results =
+          await searchDocuments(searchQuery.toUpperCase());
+
+      searchResults = results;
+    }
+  }
 }
