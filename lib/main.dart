@@ -18,20 +18,21 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
+late Widget home;
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Widget home;
     if (uid != null) {
       home = BNB();
     } else {
       home = WelcomeScreen();
     }
     return BlocProvider(
-      create: (context) => AppCubit(),
+      create: (context) => AppCubit()..getUserProfile(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(

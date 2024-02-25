@@ -5,13 +5,14 @@ import 'package:fitness_app/Modules/Home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
-
 import '../../Modules/Authentication/Welcome/welcome.dart';
-import '../../Modules/BNB/bottomNav.dart';
 import '../../Modules/Exercises/exercises.dart';
 import '../../Modules/Meals/meals.dart';
+import '../../Modules/ProfileSetup/profileSetup.dart';
 import '../../Network/local/cacheHelper.dart';
+import '../../main.dart';
 import '../Components/components.dart';
+import '../Constants/constants.dart';
 
 part 'app_state.dart';
 
@@ -75,8 +76,8 @@ class AppCubit extends Cubit<AppState> {
               style: TextStyle(color: Colors.white)),
           duration: Duration(seconds: 3),
         ));
-        navigateToAndFinish(context, BNB());
-        emit(SuccessRegisterState());
+        navigateToAndFinish(context, const ProfileSetup());
+
         return value;
       });
       return userCredential;
@@ -248,6 +249,50 @@ class AppCubit extends Cubit<AppState> {
           await searchDocuments(searchQuery.toUpperCase());
 
       searchResults = results;
+    }
+  }
+
+  void setupProfile({
+    required height,
+    required weight,
+    required gender,
+    required goal,
+    required diet,
+    required context,
+  }) {
+    FirebaseFirestore.instance.collection('users').doc(uid).update({
+      'height': height,
+      'weight': weight,
+      'gender': gender,
+      'goal': goal,
+      'diet': diet,
+    }).then((value) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        backgroundColor: Colors.green,
+        content: Text("Profile set successfully!",
+            style: TextStyle(color: Colors.white)),
+        duration: Duration(seconds: 3),
+      ));
+      navigateToAndFinish(context, home);
+    });
+  }
+
+  var height;
+  var weight;
+  var goal;
+  var diet;
+  var gender;
+  Future<void> getUserProfile() async {
+    var collection = FirebaseFirestore.instance.collection('users');
+    var docSnapshot = await collection.doc(uid).get();
+    if (docSnapshot.exists) {
+      Map<String, dynamic> data = docSnapshot.data()!;
+      print('USER PROFILE FOUND');
+      height = data['height'];
+      weight = data['weight'];
+      goal = data['goal'];
+      diet = data['diet'];
+      gender = data['gender'];
     }
   }
 }

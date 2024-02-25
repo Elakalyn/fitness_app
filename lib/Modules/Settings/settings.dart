@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:speed_up_flutter/speed_up_flutter.dart';
-
 import '../../Shared/Components/components.dart';
+import '../../Shared/Constants/constants.dart';
 
 class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({super.key});
+  SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class SettingsScreen extends StatelessWidget {
                     width: 150.0,
                     height: 75.0,
                     child: const Center(
-                      child: Text('KG/KM',
+                      child: Text('KG/CM',
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w600,
@@ -50,7 +50,7 @@ class SettingsScreen extends StatelessWidget {
                     width: 150.0,
                     height: 75.0,
                     child: const Center(
-                      child: Text('IB/MI',
+                      child: Text('IB/FT',
                           style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w600,
@@ -88,7 +88,7 @@ class SettingsScreen extends StatelessWidget {
                                 fontSize: 24,
                               )),
                           const Spacer(),
-                          const Text('78 KG',
+                          Text('${cubit.weight} KG',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w600,
@@ -112,8 +112,8 @@ class SettingsScreen extends StatelessWidget {
                                 fontSize: 24,
                               )),
                           const Spacer(),
-                          const Text('164 CM',
-                              style: TextStyle(
+                          Text('${cubit.height} CM',
+                              style: const TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 18,
@@ -136,8 +136,8 @@ class SettingsScreen extends StatelessWidget {
                                 fontSize: 24,
                               )),
                           const Spacer(),
-                          const Text('Female',
-                              style: TextStyle(
+                          Text('${cubit.gender}',
+                              style: const TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 18,
@@ -174,9 +174,9 @@ class SettingsScreen extends StatelessWidget {
                             )),
                       ),
                       const Spacer(),
-                      const Align(
+                      Align(
                         alignment: Alignment.center,
-                        child: Text('Ketogenic',
+                        child: Text('${cubit.diet}',
                             style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.w600,
@@ -211,7 +211,7 @@ class SettingsScreen extends StatelessWidget {
                                 fontSize: 24,
                               )),
                           const Spacer(),
-                          const Text('Lose Weight',
+                           Text('${cubit.goal}',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w600,
@@ -235,8 +235,8 @@ class SettingsScreen extends StatelessWidget {
                                 fontSize: 24,
                               )),
                           const Spacer(),
-                          const Text('70 KG',
-                              style: TextStyle(
+                          Text('',
+                              style: const TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 18,
@@ -287,6 +287,8 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              16.h,
+              Text('UID: $uid'),
               32.h,
             ],
           ),

@@ -1,3 +1,3 @@
 import '../../Network/local/cacheHelper.dart';
 
-var uid = CacheHelper.getData(key: 'uid');
+var uid = 'kz9PDHiTPWguNNJWKydys3Qc9TF2'; // CacheHelper.getData(key: 'uid');

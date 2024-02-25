@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:speed_up_flutter/speed_up_flutter.dart';
-
 import '../../../Shared/Components/components.dart';
 import '../../AdminPanel/admin.dart';
+import '../Sign Up/signup.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -122,11 +122,12 @@ class LoginScreen extends StatelessWidget {
                     ),
                     24.h,
                     GestureDetector(
-                      onLongPress: (){
-                         navigateToAndFinish(context, BNB());
+                      onLongPress: () {
+                        navigateToAndFinish(context, BNB());
                       },
                       onTap: () {
-                        if(emailController.text == 'admin' && passwordController.text == 'admin'){
+                        if (emailController.text == 'admin' &&
+                            passwordController.text == 'admin') {
                           navigateToAndFinish(context, AdminPanel());
                         }
 
@@ -168,6 +169,33 @@ class LoginScreen extends StatelessWidget {
                           onTap: () {},
                           child: Text(
                             'Reset password',
+                            style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                decoration: TextDecoration.underline),
+                          ),
+                        ),
+                      ],
+                    ),
+                    16.h,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Don\'t have an account?',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        8.w,
+                        GestureDetector(
+                          onTap: () {
+                            navigateToAndFinish(context, SignUpScreen());
+                          },
+                          child: Text(
+                            'Sign up',
                             style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,

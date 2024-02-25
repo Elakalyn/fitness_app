@@ -26,6 +26,14 @@ class SuccessRegisterState extends AppState {}
 // Search states
 
 final class StartSearchState extends AppState {}
+
 final class SearchLoadingState extends AppState {}
+
 final class SearchSuccessState extends AppState {}
+
 final class SearchErrorState extends AppState {}
+
+// Set Profile States
+
+final class SetProfileState extends AppState {}
+
