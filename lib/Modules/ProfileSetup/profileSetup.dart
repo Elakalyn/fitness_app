@@ -23,7 +23,8 @@ class ProfileSetup extends StatelessWidget {
     var goal1 = false;
     var goal2 = false;
     var goal3 = false;
-    final controller = PageController(viewportFraction: 0.8, keepPage: true);
+    final controller =
+        PageController(viewportFraction: 0.8, keepPage: true, initialPage: 0);
     return BlocConsumer<AppCubit, AppState>(
       listener: (context, state) {
         // TODO: implement listener
@@ -37,15 +38,16 @@ class ProfileSetup extends StatelessWidget {
               children: [
                 40.h,
                 SmoothPageIndicator(
-                    controller: controller, // PageController
-                    count: 3,
-                    effect: WormEffect(
-                        dotHeight: 10,
-                        dotWidth: 92,
-                        dotColor: Colors.white,
-                        activeDotColor:
-                            HexColor("F2C70D")), // your preferred effect
-                    onDotClicked: (index) {}),
+                  controller: controller, // PageController
+                  count: 3,
+
+                  effect: WormEffect(
+                      dotHeight: 10,
+                      dotWidth: 92,
+                      dotColor: Colors.white,
+                      activeDotColor:
+                          HexColor("F2C70D")), // your preferred effect
+                ),
                 32.h,
                 Text('What\'s your goal?',
                     style: TextStyle(
@@ -183,7 +185,8 @@ class ProfileSetup2 extends StatelessWidget {
     var diet2 = false;
     var diet3 = false;
     var diet4 = false;
-    final controller = PageController(viewportFraction: 0.8, keepPage: true);
+    var controller = PageController(viewportFraction: 0.8, keepPage: true, initialPage: 1);
+
     return BlocConsumer<AppCubit, AppState>(
       listener: (context, state) {
         // TODO: implement listener
@@ -403,7 +406,8 @@ class ProfileSetup3 extends StatelessWidget {
         AppCubit.get(context).emit(SuccessRegisterState());
       },
     );
-    final controller = PageController(viewportFraction: 0.8, keepPage: true);
+    var controller = PageController(viewportFraction: 0.8, keepPage: true, initialPage: 2);
+
     return BlocConsumer<AppCubit, AppState>(
       listener: (context, state) {
         // TODO: implement listener
@@ -579,13 +583,13 @@ class ProfileSetup3 extends StatelessWidget {
                       _weight = weightController.text;
                       _gender = dropdownValue;
                       AppCubit.get(context).setupProfile(
-                          height: _height,
-                          weight: _weight,
-                          gender: _gender,
-                          goal: _goal,
-                          diet: _diet,
-                          context: context,
-                          );
+                        height: _height,
+                        weight: _weight,
+                        gender: _gender,
+                        goal: _goal,
+                        diet: _diet,
+                        context: context,
+                      );
                     },
                     style: ButtonStyle(
                         minimumSize:

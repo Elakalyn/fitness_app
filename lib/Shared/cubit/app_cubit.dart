@@ -282,7 +282,20 @@ class AppCubit extends Cubit<AppState> {
   var goal;
   var diet;
   var gender;
+
+  var weightUnit;
+  var lenghtUnit;
   Future<void> getUserProfile() async {
+    if (await CacheHelper.getData(key: 'metricUnits') == null) {
+      metricUnits = true;
+    }
+    if (metricUnits == true) {
+      weightUnit = 'KG';
+      lenghtUnit = 'CM';
+    } else if (metricUnits == false) {
+      weightUnit = 'IB';
+      lenghtUnit = 'FT';
+    }
     var collection = FirebaseFirestore.instance.collection('users');
     var docSnapshot = await collection.doc(uid).get();
     if (docSnapshot.exists) {
@@ -294,5 +307,19 @@ class AppCubit extends Cubit<AppState> {
       diet = data['diet'];
       gender = data['gender'];
     }
+  }
+
+  Future<void> changeUnit(val) async {
+    await CacheHelper.saveData(key: 'metricUnits', value: val);
+    metricUnits = await CacheHelper.getData(key: 'metricUnits');
+    if (metricUnits == true) {
+      weightUnit = 'KG';
+      lenghtUnit = 'CM';
+    } else if (metricUnits == false) {
+      weightUnit = 'IB';
+      lenghtUnit = 'FT';
+    }
+
+    emit(ChangeUnitState());
   }
 }

@@ -37,3 +37,4 @@ final class SearchErrorState extends AppState {}
 
 final class SetProfileState extends AppState {}
 
+final class ChangeUnitState extends AppState {}
